@@ -1,19 +1,29 @@
-const human = {
-  firstName: "David",
-  lastName: "Park",
-  nationality: "South Korea",
-  favFood: {
-    breakfast: "apple",
-    lunch: "noodle",
-    dinner: "ddeokbokgi"
-  }
+// Array
+
+const days = ["Mon", "Tue", "Wed"];
+const otherDays = ["Thur", "Fri", "Sat"];
+
+// const allDays = days + otherDays;
+const allDays = [...days, ...otherDays, "Sun"];
+
+console.log(allDays);
+
+// Object
+
+const ob = {
+  first: "Hi",
+  second: "hello"
 };
 
-const {
-  firstName,
-  lastName,
-  nationality: national,
-  favFood: { breakfast, lunch, dinner }
-} = human;
+const ab = {
+  thrid: "bye bye"
+};
 
-console.log(firstName, lastName, national, breakfast, lunch, dinner);
+// const two = { ob, ab };
+const two = { ...ob, ...ab };
+
+console.log(two);
+
+// function
+
+const shi = (something, args) => console.log(...args);
