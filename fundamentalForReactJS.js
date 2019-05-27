@@ -1,25 +1,18 @@
-class Human {
-  constructor(firstname, lastname) {
-    this.firstname = firstname;
-    this.lastname = lastname;
-  }
-}
+const days = ["Mon", "Tue", "Wed", "Thur", "Fri"];
 
-const david = new Human("David", "Park");
+// 1. General .map
+const generalMap = days.map(potato => console.log(potato));
 
-console.log(david);
+// 2. Separated function
+const addSmile = day => `😁  ${day}`;
 
-class Baby extends Human {
-  cry() {
-    console.log("waaaaaa!");
-  }
-  sayMyName() {
-    console.log(this.firstname, this.lastname);
-  }
-}
+const smilingDays = days.map(addSmile);
 
-const davidBaby = new Baby("David", "Park");
+console.log(smilingDays);
 
-console.log(davidBaby);
-console.log(davidBaby.cry());
-console.log(davidBaby.sayMyName());
+// 3. index
+const addNumber = (day, index) => `#${index + 1} ${day}`;
+
+const numberingDays = days.map(addNumber);
+
+console.log(numberingDays);
