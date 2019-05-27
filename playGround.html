@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #target {
+        font-size: 20px;
+        border-bottom: 2px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="target">Vanilla JavaScript</p>
+    <p>Data: <input type="text" id="dt" value="java" /></p>
+    <p>Start: <input type="text" id="st" value="5" /></p>
+    <p>End: <input type="text" id="end" value="5" /></p>
+    <p>
+      <input type="button" onclick="appData()" value="appendData(data)" />
+      <input type="button" onclick="delData()" value="deleteData(start,end)" />
+      <input type="button" onclick="insData()" value="insertData(start,data)" />
+      <input
+        type="button"
+        onclick="replData()"
+        value="replaceData(start,end,data)"
+      />
+      <input
+        type="button"
+        onclick="subsData()"
+        value="substringData(start,end)"
+      />
+    </p>
+    <script>
+      var t = document.getElementById("target").firstChild;
+      var d = document.getElementById("dt");
+      var s = document.getElementById("st");
+      var e = document.getElementById("end");
+      function appData() {
+        t.appendData(d.value);
+      }
+      function delData() {
+        t.deleteData(s.value, e.value);
+      }
+      function insData() {
+        t.insertData(s.value, d.value);
+      }
+      function replData() {
+        t.replaceData(s.value, e.value, d.value);
+      }
+      function subsData() {
+        console.log(t.substringData(s.value, e.value));
+        console.log(t.nodeValue);
+        console.log(t.data);
+      }
+    </script>
+  </body>
+</html>
