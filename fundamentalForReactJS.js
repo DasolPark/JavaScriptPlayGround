@@ -1,29 +1,25 @@
-// Array
+class Human {
+  constructor(firstname, lastname) {
+    this.firstname = firstname;
+    this.lastname = lastname;
+  }
+}
 
-const days = ["Mon", "Tue", "Wed"];
-const otherDays = ["Thur", "Fri", "Sat"];
+const david = new Human("David", "Park");
 
-// const allDays = days + otherDays;
-const allDays = [...days, ...otherDays, "Sun"];
+console.log(david);
 
-console.log(allDays);
+class Baby extends Human {
+  cry() {
+    console.log("waaaaaa!");
+  }
+  sayMyName() {
+    console.log(this.firstname, this.lastname);
+  }
+}
 
-// Object
+const davidBaby = new Baby("David", "Park");
 
-const ob = {
-  first: "Hi",
-  second: "hello"
-};
-
-const ab = {
-  thrid: "bye bye"
-};
-
-// const two = { ob, ab };
-const two = { ...ob, ...ab };
-
-console.log(two);
-
-// function
-
-const shi = (something, args) => console.log(...args);
+console.log(davidBaby);
+console.log(davidBaby.cry());
+console.log(davidBaby.sayMyName());
