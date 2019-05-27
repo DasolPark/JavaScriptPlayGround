@@ -1,18 +1,21 @@
-const days = ["Mon", "Tue", "Wed", "Thur", "Fri"];
+const numbers = [2, 3, 44, 15, 13, 11, 1325, 234, 456, 334, 222, 1];
 
-// 1. General .map
-const generalMap = days.map(potato => console.log(potato));
+const numberCondition = numb => numb < 15;
 
-// 2. Separated function
-const addSmile = day => `😁  ${day}`;
+const number = numbers.filter(numberCondition);
 
-const smilingDays = days.map(addSmile);
+console.log(number);
 
-console.log(smilingDays);
+const strstr = ["hi", "hello", "bye"];
 
-// 3. index
-const addNumber = (day, index) => `#${index + 1} ${day}`;
+const strCondition = str => str.length < 3;
 
-const numberingDays = days.map(addNumber);
+const str = strstr.filter(strCondition);
 
-console.log(numberingDays);
+console.log(str);
+
+let posts = ["Hi", "Hello", "Bye"];
+
+posts = posts.filter(post => post !== "Bye");
+
+console.log(posts);
