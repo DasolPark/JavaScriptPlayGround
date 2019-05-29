@@ -19,3 +19,17 @@ let posts = ["Hi", "Hello", "Bye"];
 posts = posts.filter(post => post !== "Bye");
 
 console.log(posts);
+
+// .map practice
+
+const something = ["hi", "bye", "yes"];
+
+const resultSome = something.map(some => `david ${some}`);
+
+console.log(resultSome);
+
+const anything = ["one", "two", "three"];
+
+const resultAny = anything.map((any, index) => `${index} + ${any}`);
+
+console.log(resultAny);
