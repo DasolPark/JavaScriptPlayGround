@@ -1,35 +1,27 @@
-const numbers = [2, 3, 44, 15, 13, 11, 1325, 234, 456, 334, 222, 1];
-
-const numberCondition = numb => numb < 15;
-
-const number = numbers.filter(numberCondition);
-
-console.log(number);
-
-const strstr = ["hi", "hello", "bye"];
-
-const strCondition = str => str.length < 3;
-
-const str = strstr.filter(strCondition);
-
-console.log(str);
+// .forEach
 
 let posts = ["Hi", "Hello", "Bye"];
 
-posts = posts.filter(post => post !== "Bye");
+posts.forEach(post => console.log(post));
 
-console.log(posts);
+// push
 
-// .map practice
+let numbers = ["one", "two", "three"];
 
-const something = ["hi", "bye", "yes"];
+numbers.push("four");
 
-const resultSome = something.map(some => `david ${some}`);
+console.log(numbers);
 
-console.log(resultSome);
+// includes
 
-const anything = ["one", "two", "three"];
+let greetings = ["Hi", "Hello", "Bye"];
 
-const resultAny = anything.map((any, index) => `${index} + ${any}`);
+if (!greetings.includes("Howdy")) {
+  greetings.push("Howdy");
+}
 
-console.log(resultAny);
+console.log(greetings);
+
+// reverse
+
+console.log(numbers.reverse());
