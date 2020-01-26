@@ -17,25 +17,82 @@
         font-family: 'Jua', sans-serif;
       }
       body {
-        margin-top: 20px;
+        padding: 0px;
+        margin: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        height: 95vh;
+        background-color: #f6f9fc;
+      }
+
+      .main__container {
+        height: 700px;
+        padding-top: 10px;
+        padding-bottom: 10px;
       }
 
       .board__container,
       .contents__container,
       .editor__container {
-        width: 100%;
-        height: 600px;
+        width: 700px;
         display: flex;
         justify-content: flex-start;
         align-items: center;
         flex-direction: column;
+        background-color: #ffffff;
+      }
+
+      .board__container {
+        margin: 10px 0px 0px 0px;
+        height: 220px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 15px;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+        position: relative;
+      }
+
+      .contents__container {
+        margin: 10px 0px;
+        height: 220px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 15px;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+      }
+
+      .editor__container {
+        margin: 10px 0px;
+        height: 220px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 15px;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
       }
 
       /* Board Lists */
       .board {
         width: 600px;
         text-align: center;
-        margin-bottom: 30px;
+        margin-bottom: 15px;
+      }
+
+      .board__index-container {
+        position: absolute;
+        bottom: 10px;
+      }
+
+      .board__index-link {
+        all: unset;
+        margin-right: 5px;
+      }
+
+      .board__index-link:hover {
+        cursor: pointer;
+        color: blue;
       }
 
       /* Contents */
@@ -86,7 +143,7 @@
       }
 
       .editor__content-input {
-        height: 150px;
+        height: 100px;
       }
 
       .editor__btn {
@@ -102,19 +159,22 @@
     </style>
   </head>
   <body>
-    <main class="board__container">
-      <table class="board">
-        <thead class="board__table-head">
-          <tr class="board__titles">
-            <th class="board__column">번호</th>
-            <th class="board__column">제목</th>
-            <th class="board__column">작성자</th>
-            <th class="board__column">작성일</th>
-            <th class="board__column">조회</th>
-          </tr>
-        </thead>
-        <tbody class="board__contents" id="board-body"></tbody>
-      </table>
+    <main class="main__container">
+      <div class="board__container">
+        <table class="board">
+          <thead class="board__table-head">
+            <tr class="board__titles">
+              <th class="board__column">번호</th>
+              <th class="board__column">제목</th>
+              <th class="board__column">작성자</th>
+              <th class="board__column">작성일</th>
+              <th class="board__column">조회</th>
+            </tr>
+          </thead>
+          <tbody class="board__contents" id="board-body"></tbody>
+        </table>
+        <div class="board__index-container" id="index-container"></div>
+      </div>
       <div class="contents__container"></div>
       <div class="editor__container">
         <form action="#" class="editor__form" id="editor-form">
@@ -251,46 +311,118 @@
         const lists = JSON.parse(localStorage.getItem(BOARDLIST_LS));
 
         lists.forEach((list, index) => {
-          const tr = document.createElement('tr');
-          tr.classList.add('board__content');
+          if (index < 5) {
+            const tr = document.createElement('tr');
+            tr.classList.add('board__content');
 
-          const tdNum = document.createElement('td');
-          tdNum.classList.add('board__content-column');
-          tdNum.textContent = list.num;
+            const tdNum = document.createElement('td');
+            tdNum.classList.add('board__content-column');
+            tdNum.textContent = list.num;
 
-          const aTitle = document.createElement('a');
-          aTitle.href = '#';
-          aTitle.id = `link-to-content${index}`;
+            const aTitle = document.createElement('a');
+            aTitle.href = '#';
+            aTitle.id = `link-to-content${index}`;
 
-          const tdTitle = document.createElement('td');
-          tdTitle.classList.add('board__content-column');
-          tdTitle.textContent = list.title;
+            const tdTitle = document.createElement('td');
+            tdTitle.classList.add('board__content-column');
+            tdTitle.textContent = list.title;
 
-          aTitle.appendChild(tdTitle);
+            aTitle.appendChild(tdTitle);
 
-          const tdAuthor = document.createElement('td');
-          tdAuthor.classList.add('board__content-column');
-          tdAuthor.textContent = list.author;
+            const tdAuthor = document.createElement('td');
+            tdAuthor.classList.add('board__content-column');
+            tdAuthor.textContent = list.author;
 
-          const tdDate = document.createElement('td');
-          tdDate.classList.add('board__content-column');
-          tdDate.textContent = list.date;
+            const tdDate = document.createElement('td');
+            tdDate.classList.add('board__content-column');
+            tdDate.textContent = list.date;
 
-          const tdViews = document.createElement('td');
-          tdViews.classList.add('board__content-column');
-          tdViews.textContent = list.views;
+            const tdViews = document.createElement('td');
+            tdViews.classList.add('board__content-column');
+            tdViews.textContent = list.views;
 
-          tr.appendChild(tdNum);
-          tr.appendChild(aTitle);
-          tr.appendChild(tdAuthor);
-          tr.appendChild(tdDate);
-          tr.appendChild(tdViews);
+            tr.appendChild(tdNum);
+            tr.appendChild(aTitle);
+            tr.appendChild(tdAuthor);
+            tr.appendChild(tdDate);
+            tr.appendChild(tdViews);
 
-          boardTableBody.appendChild(tr);
-          const linkToContent = document.querySelector(
-            `#link-to-content${index}`
-          );
-          linkToContent.addEventListener('click', onTitleClick);
+            boardTableBody.appendChild(tr);
+            const linkToContent = document.querySelector(
+              `#link-to-content${index}`
+            );
+            linkToContent.addEventListener('click', onTitleClick);
+          } else if (index === 5) {
+            const boardIndexMax = Math.ceil(lists.length / 5);
+            for (let i = 0; i < boardIndexMax; i++) {
+              const indexContainer = document.querySelector('#index-container');
+
+              const aIndex = document.createElement('a');
+              aIndex.classList.add('board__index-link');
+
+              const spanIndexText = document.createElement('span');
+              spanIndexText.classList.add('board__index');
+              spanIndexText.textContent = i + 1;
+
+              aIndex.appendChild(spanIndexText);
+              indexContainer.appendChild(aIndex);
+
+              aIndex.addEventListener('click', () => {
+                showBoardListsNewPage(i);
+              });
+            }
+          }
+        });
+      }
+
+      function showBoardListsNewPage(pageIndex) {
+        boardTableBody.textContent = '';
+        const lists = JSON.parse(localStorage.getItem(BOARDLIST_LS));
+        const limitPage = pageIndex * 5;
+
+        lists.forEach((list, index) => {
+          if (index >= limitPage && index < limitPage + 5) {
+            const tr = document.createElement('tr');
+            tr.classList.add('board__content');
+
+            const tdNum = document.createElement('td');
+            tdNum.classList.add('board__content-column');
+            tdNum.textContent = list.num;
+
+            const aTitle = document.createElement('a');
+            aTitle.href = '#';
+            aTitle.id = `link-to-content${index}`;
+
+            const tdTitle = document.createElement('td');
+            tdTitle.classList.add('board__content-column');
+            tdTitle.textContent = list.title;
+
+            aTitle.appendChild(tdTitle);
+
+            const tdAuthor = document.createElement('td');
+            tdAuthor.classList.add('board__content-column');
+            tdAuthor.textContent = list.author;
+
+            const tdDate = document.createElement('td');
+            tdDate.classList.add('board__content-column');
+            tdDate.textContent = list.date;
+
+            const tdViews = document.createElement('td');
+            tdViews.classList.add('board__content-column');
+            tdViews.textContent = list.views;
+
+            tr.appendChild(tdNum);
+            tr.appendChild(aTitle);
+            tr.appendChild(tdAuthor);
+            tr.appendChild(tdDate);
+            tr.appendChild(tdViews);
+
+            boardTableBody.appendChild(tr);
+            const linkToContent = document.querySelector(
+              `#link-to-content${index}`
+            );
+            linkToContent.addEventListener('click', onTitleClick);
+          }
         });
       }
 
