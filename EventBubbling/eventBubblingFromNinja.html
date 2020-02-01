@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Event Bubbling</title>
+    <style>
+      #event-lists {
+        width: 300px;
+        border: 2px solid rgba(0, 0, 0, 0.8);
+      }
+      #event-list {
+        display: flex;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="event-lists">
+      <li id="event-list">
+        <h3>Hi there</h3>
+        <button class="delete">Delete</button>
+      </li>
+      <li id="event-list">
+        <h3>Bye there</h3>
+        <button class="delete">Delete</button>
+      </li>
+      <li id="event-list">
+        <h3>Hey there</h3>
+        <button class="delete">Delete</button>
+      </li>
+      <li id="event-list">
+        <h3>Hello there</h3>
+        <button class="delete">Delete</button>
+      </li>
+      <li id="event-list">
+        <h3>Whatup there</h3>
+        <button class="delete">Delete</button>
+      </li>
+    </ul>
+    <script>
+      // 1st solution
+      // const eventList = document.querySelectorAll('#event-list button');
+
+      // Array.from(eventList).forEach(btn => {
+      //   btn.addEventListener('click', e => {
+      //     const li = e.target.parentElement;
+      //     li.parentNode.removeChild(li);
+      //   });
+      // });
+
+      // 2nd solution
+      const list = document.querySelector('#event-lists');
+
+      list.addEventListener('click', e => {
+        if (e.target.className === 'delete') {
+          const li = e.target.parentElement;
+          li.parentNode.removeChild(li);
+        }
+      });
+    </script>
+  </body>
+</html>
