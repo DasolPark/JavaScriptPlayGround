@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plus and Minus Button</title>
+  </head>
+  <body>
+    <h1>This is Plus and Minus Button for shopping cart</h1>
+    <input type="button" value="+" id="plusBtn" />
+    <input type="text" name="ea" id="eaInput" value="1" />
+    <input type="button" value="-" id="minusBtn" />
+  </body>
+  <script>
+    const plusBtn = document.querySelector('#plusBtn');
+    const minusBtn = document.querySelector('#minusBtn');
+    const eaInput = document.querySelector('#eaInput');
+
+    const onPlusBtnClick = () => {
+      eaInput.value = parseInt(eaInput.value) + 1;
+    };
+
+    const onMinusBtnClick = () => {
+      eaInput.value = parseInt(eaInput.value) - 1;
+    };
+
+    plusBtn.addEventListener('click', onPlusBtnClick);
+    minusBtn.addEventListener('click', onMinusBtnClick);
+  </script>
+</html>
