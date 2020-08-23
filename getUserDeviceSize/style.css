@@ -1,0 +1,130 @@
+html {
+  --bg: #fff;
+  --color: #000;
+  --header-color: #dcdcdc;
+}
+
+html[data-theme='dark'] {
+  --bg: #000;
+  --color: #fff;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--color);
+}
+
+.windowInnerWidth {
+  background-color: red;
+  color: #fff;
+  font-size: 2rem;
+  width: 1175px;
+}
+
+.screenWidth {
+  background-color: blue;
+  color: #fff;
+  font-size: 2rem;
+  width: 1920px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(320px, 1fr));
+  justify-content: center;
+  align-content: center;
+  gap: 10px;
+  background-color: var(--backgroundColor);
+  color: var(--textColor);
+}
+
+.item {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  width: 320px;
+  height: 320px;
+  font-size: 3rem;
+  background-color: var(--bg);
+  color: var(--color);
+}
+
+.checkbox-container {
+  position: absolute;
+  left: 50px;
+  top: 150px;
+}
+
+input[type='checkbox'] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 100px;
+  height: 50px;
+  background: grey;
+  display: block;
+  border-radius: 100px;
+  position: relative;
+}
+
+label:after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border-radius: 40px;
+  transition: 0.3s;
+}
+
+input:checked + label {
+  background: #dcdcdc;
+}
+
+input:checked + label:after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+}
+
+label:active:after {
+  width: 130px;
+}
+
+@media (max-width: 992px) {
+  .container {
+    grid-template-columns: repeat(3, minmax(320px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: repeat(2, minmax(320px, 1fr));
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    --bg: #000;
+    --color: #fff;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  html {
+    --bg: #fff;
+    --color: #000;
+  }
+}

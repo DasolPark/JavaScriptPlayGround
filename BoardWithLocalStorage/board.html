@@ -16,6 +16,7 @@
           Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-family: 'Jua', sans-serif;
       }
+
       body {
         padding: 0px;
         margin: 0px;
@@ -280,10 +281,11 @@
             num: `${nums++}`,
             title: `${title}`,
             author: `${author}`,
-            date: `${date.getFullYear()}.${date.getMonth() +
-              1}.${date.getDate()}.`,
+            date: `${date.getFullYear()}.${
+              date.getMonth() + 1
+            }.${date.getDate()}.`,
             views: `${views++}`,
-            content: `${content}`
+            content: `${content}`,
           });
 
           localStorage.setItem(BOARDLIST_LS, JSON.stringify(objArr));
@@ -292,10 +294,11 @@
             num: `${nums++}`,
             title: `${title}`,
             author: `${author}`,
-            date: `${date.getFullYear()}.${date.getMonth() +
-              1}.${date.getDate()}.`,
+            date: `${date.getFullYear()}.${
+              date.getMonth() + 1
+            }.${date.getDate()}.`,
             views: `${views++}`,
-            content: `${content}`
+            content: `${content}`,
           });
 
           localStorage.setItem(BOARDLIST_LS, JSON.stringify(lists));

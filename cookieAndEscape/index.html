@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cookie Test</title>
+  </head>
+  <body>
+    <p>Cookie</p>
+    <script>
+      var setCookie = function(key, value, day) {
+        var date = new Date();
+        date.setTime(date.getTime() + day * 60 * 60 * 24 * 1000);
+        document.cookie =
+          key + '=' + value + ';expires=' + date.toUTCString() + ';path=/';
+      };
+
+      var getCookie = function(key) {
+        var value = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+        console.log(document.cookie);
+        console.log(value);
+        return value ? value[2] : null;
+      };
+
+      var deleteCookie = function(key) {
+        var date = new Date();
+        document.cookie =
+          key + '= ' + '; expires=' + date.toUTCString() + ';path=/';
+      };
+
+      setCookie('dasol', 'park', 30);
+      console.log(getCookie('dasol'));
+      // console.log(document.cookie);
+      // deleteCookie('dasol');
+
+      // escape
+      // const str = 'hi다솔';
+      // const escapedStr = escape(str);
+      // console.log(escapedStr);
+      // console.log(unescape(escapedStr));
+    </script>
+  </body>
+</html>
