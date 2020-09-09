@@ -57,5 +57,9 @@
 - 중첩함수는 실행 후 사라지지 않고, 렉시컬 환경을 메모리에 기억한다
 - 이 중첩함수를 사라지게 할 수 있는 key가 closure
 
+## Equality comparisons
+
+- === - Strict Equality Comparison ("strict equality", "identity", "triple equals")
+- == - Abstract Equality Comparison ("loose equality", "double equals")
+
 ## ES6 features
-- 
